@@ -1,6 +1,6 @@
 <?php
 
-namespace 42sol\LaravelOnlyoffice;
+namespace 42sol\LaravelOnlyoffice\Providers;
 
 use Illuminate\Foundation\Console\AboutCommand;
 use Illuminate\Support\ServiceProvider;
