@@ -1,0 +1,32 @@
+{
+    "name": "42sol/onlyoffice-laravel",
+    "description": "Connector for Laravel for easy Onlyoffcie integration",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ValerianMemsk",
+            "email": "goncharenkova@42sol.ru"
+        }
+    ],
+    "require": {
+        "php": ">=8.0.0",
+        "firebase/php-jwt": "^6.11"
+    },
+    "autoload": {
+        "psr-4": {
+            "42sol\\LaravelOnlyoffice\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "42sol\\LaravelOnlyoffice\\Providers\\LaravelInstallerServiceProvider"
+            ]
+        }
+    },
+
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable"
+}
