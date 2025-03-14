@@ -38,23 +38,30 @@ class OnlyOfficeController extends Controller
                         'error' => 0
                     ]);
 
-                case 2:
+                case 2: // closed and sent to be saved
                     OnlyOfficeService::save($request->get('url'), $request->get('key'));
                     break;
 
                 case 3: // error during saving
-                    Log::error("Onlyoffice error: " . "");
-                    break;
-                case 4: // closed with no change
+                case 7: // error during FORCE saving
+                    Log::error("Onlyoffice document saving error error. Status: $status");
                     break;
 
-                case 6: //document is being edited, but the current state is saved
-                    $staus = OnlyOfficeService::save($request->get('url'), $request->get('key'));
+                case 4: // closed with no change
+                    // does not really matter what is returned here, since basically nothing happened
                     return new \Illuminate\Http\JsonResponse([
                         'error' => 0
                     ]);
-                case 7: // error while force saving
-                    Log::error("Onlyoffice error: " . "");
+
+                case 6: // force save
+                    $status = OnlyOfficeService::save($request->get('url'), $request->get('key'));
+
+                    if ($status) {
+                        return new \Illuminate\Http\JsonResponse([
+                            'error' => 0
+                        ]);
+                    }
+                    
                     break;
             }
         }
