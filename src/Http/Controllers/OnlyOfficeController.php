@@ -1,6 +1,6 @@
 <?php
 
-namespace 42sol\LaravelOnlyoffice\Http\Controllers;
+namespace sol42\LaravelOnlyoffice\Http\Controllers;
 
 use App\Services\OnlyOfficeService;
 use Firebase\JWT\JWT;
@@ -61,7 +61,7 @@ class OnlyOfficeController extends Controller
                             'error' => 0
                         ]);
                     }
-                    
+
                     break;
             }
         }

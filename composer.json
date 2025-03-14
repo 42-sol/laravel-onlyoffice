@@ -14,13 +14,13 @@
     },
     "autoload": {
         "psr-4": {
-            "42sol\\LaravelOnlyoffice\\": "src/"
+            "sol42\\LaravelOnlyoffice\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "42sol\\LaravelOnlyoffice\\Providers\\OnlyofficeServiceProvider"
+                "sol42\\LaravelOnlyoffice\\Providers\\OnlyofficeServiceProvider"
             ]
         }
     },
