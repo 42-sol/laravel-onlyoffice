@@ -1,5 +1,5 @@
 {
-    "name": "42sol/onlyoffice-laravel",
+    "name": "42sol/laravel-onlyoffice",
     "description": "Connector for Laravel for easy Onlyoffcie integration",
     "license": "MIT",
     "authors": [
