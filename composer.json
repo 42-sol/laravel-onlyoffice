@@ -20,7 +20,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "42sol\\LaravelOnlyoffice\\Providers\\LaravelInstallerServiceProvider"
+                "42sol\\LaravelOnlyoffice\\Providers\\OnlyofficeServiceProvider"
             ]
         }
     },

@@ -32,9 +32,6 @@ class OnlyOfficeController extends Controller
         $status = $request->get('status');
 
         if ($status) {
-            //\Illuminate\Support\Facades\Log::info('Callback received at:' . now()->toDateTimeLocalString());
-            //\Illuminate\Support\Facades\Log::info(json_encode($request->all()));
-
             switch ($status) {
                 case 1:
                     return new \Illuminate\Http\JsonResponse([
@@ -52,6 +49,7 @@ class OnlyOfficeController extends Controller
                     break;
 
                 case 6: //document is being edited, but the current state is saved
+                    $staus = OnlyOfficeService::save($request->get('url'), $request->get('key'));
                     return new \Illuminate\Http\JsonResponse([
                         'error' => 0
                     ]);
