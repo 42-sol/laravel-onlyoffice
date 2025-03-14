@@ -10,7 +10,7 @@ class OnlyofficeServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(
-           '/config/onlyoffice.php', 'onlyoffice'
+           __DIR__.'/config/onlyoffice.php', 'onlyoffice'
         );
     }
 
@@ -20,17 +20,17 @@ class OnlyofficeServiceProvider extends ServiceProvider
 
         // publish configs, views
         $this->publishes([
-           '/config/onlyoffice.php' => config_path('onlyoffice.php'),
-            '/resources/views' => resource_path('views/vendor/onlyoffice'),
+            __DIR__.'/config/onlyoffice.php' => config_path('onlyoffice.php'),
+            __DIR__.'/resources/views' => resource_path('views/vendor/onlyoffice'),
         ]);
 
         // load routes
-        $this->loadRoutesFrom('/routes/web.php');
+        $this->loadRoutesFrom(__DIR__.'/routes/web.php');
 
         // load translations
-        $this->loadTranslationsFrom('/lang', 'onlyoffice');
+        $this->loadTranslationsFrom(__DIR__.'/lang', 'onlyoffice');
 
         // load views
-        $this->loadViewsFrom('/resources/views', 'onlyoffice');
+        $this->loadViewsFrom(__DIR__.'/resources/views', 'onlyoffice');
     }
 }
