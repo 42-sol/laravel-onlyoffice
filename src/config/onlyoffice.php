@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'jwt_secret' => env('JWT_SECRET', hash('sh256', \Illuminate\Support\Str::random(265))),
+    'jwt_secret' => env('JWT_SECRET', hash('SHA256', \Illuminate\Support\Str::random(255))),
 
     'docExtensions' => [
         'doc', 'docm', 'docx', 'dot', 'dotm', 'dotx', 'epub', 'fb2', 'fodt', 'htm', 'html', 'hwp', 'hwpx', 'mht', 'mhtml',
