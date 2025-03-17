@@ -9,14 +9,12 @@ class OnlyofficeServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->mergeConfigFrom(
-           __DIR__.'/config/onlyoffice.php', 'onlyoffice'
-        );
+        $this->mergeConfigFrom(__DIR__.'/config/onlyoffice.php', 'onlyoffice');
     }
 
     public function boot(): void
     {
-        AboutCommand::add('laravel-onlyoffice', fn () => ['Version' => '1.0.2']);
+        AboutCommand::add('laravel-onlyoffice', fn () => ['Version' => '1.0.4']);
 
         // publish configs, views
         $this->publishes([
