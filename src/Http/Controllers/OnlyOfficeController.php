@@ -45,7 +45,7 @@ class OnlyOfficeController extends Controller
                     'embeddingScript' => $embeddingScript,
                 ]);
             } catch (\Error|\Exception $e) {
-                return view('onlyofficeEditor', [
+                return view('onlyoffice::editor', [
                     'error' => "Error during document handling: " . $e->getMessage(),
                 ]);
             }

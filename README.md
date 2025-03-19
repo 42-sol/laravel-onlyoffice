@@ -6,7 +6,7 @@ Connector between larvel framework and onlyoffcie self-hosted api
 After installation run 
 
 ```shell
-php artisan vendor:publish --tag=default
+php artisan vendor:publish --tag=onlyoffice-default
 ```
 
 Set "host" variable with the address of your only office installation in published configuration file

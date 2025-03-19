@@ -20,7 +20,7 @@ class OnlyofficeServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/config/onlyoffice.php' => config_path('onlyoffice.php'),
             __DIR__.'/resources/views' => resource_path('views/vendor/onlyoffice'),
-        ], 'default');
+        ], 'onlyoffice-default');
 
         $this->publishes([
             __DIR__.'/Services/OnlyoffcieService.php' => app_path('onlyoffice.php')
