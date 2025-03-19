@@ -14,17 +14,13 @@ class OnlyofficeServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        AboutCommand::add('laravel-onlyoffice', fn () => ['Version' => '1.0.9']);
+        AboutCommand::add('laravel-onlyoffice', fn () => ['Version' => '1.0.13']);
 
         // publish configs, views
         $this->publishes([
             __DIR__.'/config/onlyoffice.php' => config_path('onlyoffice.php'),
             __DIR__.'/resources/views' => resource_path('views/vendor/onlyoffice'),
         ], 'onlyoffice-default');
-
-        $this->publishes([
-            __DIR__.'/Services/OnlyoffcieService.php' => app_path('onlyoffice.php')
-        ], 'service');
 
         // load routes
         $this->loadRoutesFrom(__DIR__.'/routes/web.php');

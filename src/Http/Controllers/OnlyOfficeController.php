@@ -49,6 +49,10 @@ class OnlyOfficeController extends Controller
                     'error' => "Error during document handling: " . $e->getMessage(),
                 ]);
             }
+        } else {
+            return view('onlyoffice::editor', [
+                'error' => __('onlyoffice::package.error.noFile'),
+            ]);
         }
     }
 
