@@ -2,7 +2,7 @@
 
 namespace sol42\LaravelOnlyoffice\Http\Controllers;
 
-use App\Services\OnlyOfficeService;
+use sol42\LaravelOnlyoffice\Services\OnlyOfficeService;
 use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;

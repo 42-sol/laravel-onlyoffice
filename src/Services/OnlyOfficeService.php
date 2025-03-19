@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace sol42\LaravelOnlyoffice\Services;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\File;

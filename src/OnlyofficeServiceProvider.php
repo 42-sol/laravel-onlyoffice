@@ -14,7 +14,7 @@ class OnlyofficeServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        AboutCommand::add('laravel-onlyoffice', fn () => ['Version' => '1.0.13']);
+        AboutCommand::add('laravel-onlyoffice', fn () => ['Version' => '1.0.14']);
 
         // publish configs, views
         $this->publishes([
