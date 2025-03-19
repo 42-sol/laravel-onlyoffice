@@ -1,7 +1,9 @@
 <?php
 
 return [
-    'jwt_secret' => env('JWT_SECRET', hash('SHA256', \Illuminate\Support\Str::random(255))),
+    'jwt_secret' => env('JWT_SECRET', null),
+
+    'onlyoffice_host' => null, // http://onlyoffice
 
     'docExtensions' => [
         'doc', 'docm', 'docx', 'dot', 'dotm', 'dotx', 'epub', 'fb2', 'fodt', 'htm', 'html', 'hwp', 'hwpx', 'mht', 'mhtml',
