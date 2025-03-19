@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
 
-        <title>{{ __('onlyoffice.title') }}</title>
+        <title>{{ __('onlyoffice::package.title') }}</title>
 
         @if(!isset($error))
             <script type="text/javascript" src="{{$embeddingScript}}"></script>

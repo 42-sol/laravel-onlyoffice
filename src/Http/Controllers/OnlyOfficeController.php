@@ -18,14 +18,14 @@ class OnlyOfficeController extends Controller
         $onlyoffcieSecret = config('onlyoffice.jwt_secret');
 
         if(!$onlyoffcieHost) {
-            return view('onlyofficeEditor', [
-                'error' => __('onlyoffice.error.noHost'),
+            return view('onlyoffice::editor', [
+                'error' => __('onlyoffice::package.error.noHost'),
             ]);
         }
 
         if(!$onlyoffcieSecret) {
-            return view('onlyofficeEditor', [
-                'error' => __('onlyoffice.error.noSecret'),
+            return view('onlyoffice::editor', [
+                'error' => __('onlyoffice::package.error.noSecret'),
             ]);
         }
 
@@ -37,7 +37,7 @@ class OnlyOfficeController extends Controller
                 $token = JWT::encode($docMeta, $onlyoffcieSecret, "HS256");
                 $embeddingScript = $onlyoffcieHost . "/web-apps/apps/api/documents/api.js";
 
-                return view('onlyofficeEditor', [
+                return view('onlyoffice::editor', [
                     'document' => $docMeta,
                     'token' => $token,
                     'callbackUrl' => route('onlyoffice.listen'),
