@@ -40,4 +40,6 @@ Add following to previously mentioned container configuration, update your hosts
 ```
 
 It is better to set JWT_SECRET via env variable or directly in environment section before running containers. 
-Otherwise it will be generated automatically and will be hard to obtain. 
+Otherwise it will be generated automatically and will be difficult to obtain. 
+
+Also don't forget to add new host (```*addition to base domain name*.$DOMAIN_NAME```) to extra_hosts section of your php container configuration.
