@@ -21,4 +21,11 @@ return [
     'pdfExtensions' => [
         'djvu', 'docxf', 'oform', 'oxps', 'pdf', 'xps'
     ],
+
+    /*
+     * Service for handling onlyoffice's requests and responses.
+     * You can define your own logic by extending OnlyofficeService and implementing IOnlyofficeService interface.
+     * If none provided default handler will be used.
+     */
+    'handler' => null,
 ];

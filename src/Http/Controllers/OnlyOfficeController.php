@@ -3,55 +3,30 @@
 namespace sol42\LaravelOnlyoffice\Http\Controllers;
 
 use sol42\LaravelOnlyoffice\Services\OnlyOfficeService;
-use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 
 class OnlyOfficeController extends Controller
 {
     public function open(Request $request): \Illuminate\Contracts\View\View
     {
-        $onlyoffcieHost = config('onlyoffice.host');
-        $onlyoffcieSecret = config('onlyoffice.jwt_secret');
+        $handler = config('onlyoffice.handler', OnlyOfficeService::class);
 
-        if(!$onlyoffcieHost) {
-            return view('onlyoffice::editor', [
-                'error' => __('onlyoffice::package.error.noHost'),
+        try {
+            $docInfo = $handler::prepareDocumentInfo($request->get('document'));
+        } catch (\Error|\Exception $e) {
+            return view('onlyofficeEditor', [
+                'error' => "Error during document handling: " . $e->getMessage(),
             ]);
         }
 
-        if(!$onlyoffcieSecret) {
-            return view('onlyoffice::editor', [
-                'error' => __('onlyoffice::package.error.noSecret'),
-            ]);
-        }
-
-        $docPath = $request->get('document');
-
-        if (Storage::exists($docPath)) {
-            try {
-                $docMeta = OnlyOfficeService::getDocumentMeta($docPath);
-                $token = JWT::encode($docMeta, $onlyoffcieSecret, "HS256");
-                $embeddingScript = $onlyoffcieHost . "/web-apps/apps/api/documents/api.js";
-
-                return view('onlyoffice::editor', [
-                    'document' => $docMeta,
-                    'token' => $token,
-                    'callbackUrl' => route('onlyoffice.listen'),
-                    'documentType' => OnlyOfficeService::getDocumentKind(Arr::get($docMeta, 'fileType')),
-                    'embeddingScript' => $embeddingScript,
-                ]);
-            } catch (\Error|\Exception $e) {
-                return view('onlyoffice::editor', [
-                    'error' => "Error during document handling: " . $e->getMessage(),
-                ]);
-            }
+        if (!Arr::has($docInfo, 'error')) {
+            return view('onlyofficeEditor', $docInfo);
         } else {
-            return view('onlyoffice::editor', [
-                'error' => __('onlyoffice::package.error.noFile'),
+            return view('onlyofficeEditor', [
+                'error' => Arr::get($docInfo, 'error'),
             ]);
         }
     }
