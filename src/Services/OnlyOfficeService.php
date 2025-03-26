@@ -9,19 +9,19 @@ use Illuminate\Support\Facades\Storage;
 
 class OnlyOfficeService
 {
-    public static function prepareDocumentInfo(string $docPath) {
+    public static function prepareDocumentInfo(string $docPath): array {
         $onlyoffcieHost = config('onlyoffice.host');
         $onlyoffcieSecret = config('onlyoffice.jwt_secret');
 
         if(!$onlyoffcieHost) {
             return [
-                'error' => __('onlyoffice.error.noHost'),
+                'error' => __('onlyoffice::package.error.noHost'),
             ];
         }
 
         if(!$onlyoffcieSecret) {
             return [
-                'error' => __('onlyoffice.error.noSecret'),
+                'error' => __('onlyoffice::package.error.noSecret'),
             ];
         }
 

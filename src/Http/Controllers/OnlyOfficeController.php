@@ -14,18 +14,22 @@ class OnlyOfficeController extends Controller
     {
         $handler = config('onlyoffice.handler', OnlyOfficeService::class);
 
+        if(!$handler) {
+            $handler = OnlyOfficeService::class;
+        }
+
         try {
             $docInfo = $handler::prepareDocumentInfo($request->get('document'));
         } catch (\Error|\Exception $e) {
-            return view('onlyofficeEditor', [
+            return view('onlyoffice::editor', [
                 'error' => "Error during document handling: " . $e->getMessage(),
             ]);
         }
 
         if (!Arr::has($docInfo, 'error')) {
-            return view('onlyofficeEditor', $docInfo);
+            return view('onlyoffice::editor', $docInfo);
         } else {
-            return view('onlyofficeEditor', [
+            return view('onlyoffice::editor', [
                 'error' => Arr::get($docInfo, 'error'),
             ]);
         }
